@@ -1,8 +1,8 @@
-ï»¿var Chat= function (socket) {
+var Chat= function (socket) {
     this.socket=socket;
 };
 
-//å‘é€æ¶ˆæ¯
+//·¢ËÍÏûÏ¢
 Chat.prototype.sendMeeage= function (room,text) {
     var message={
         room:room,
@@ -11,7 +11,7 @@ Chat.prototype.sendMeeage= function (room,text) {
     this.socket.emit("message",message);
 };
 
-//å˜æ›´æˆ¿é—´
+//±ä¸ü·¿¼ä
 Chat.prototype.changeRoom= function (room) {
     this.socket.emit('join',{
         newRoom:room
@@ -19,7 +19,7 @@ Chat.prototype.changeRoom= function (room) {
 };
 
 
-//å¤„ç†èŠå¤©å‘½ä»¤
+//´¦ÀíÁÄÌìÃüÁî
 Chat.prototype.processCommand=function(command){
     var words=command.split(' ');
     var command=words[0].substring(1,words[0].length).toLowerCase();
@@ -36,7 +36,7 @@ Chat.prototype.processCommand=function(command){
             this.socket.emit('nameAttempts',name);
             break;
         default :
-            message='æ²¡æœ‰å¯æ‰§è¡Œçš„å‘½ä»¤.';
+            message='Ã»ÓĞ¿ÉÖ´ĞĞµÄÃüÁî.';
             break;
     }
     return message;
