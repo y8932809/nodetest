@@ -1,11 +1,11 @@
-function  divEscapedContentElement(message){
+ï»¿function  divEscapedContentElement(message){
     return $('<div></div>').text(message);
 }
 
 function  divSystemContentElement(message){
     return $('<div></div>').html('<li>'+message+'</li>');
 }
-//´¦ÀíÔ­Ê¼µÄÓÃ»§ÊäÈë
+//å¤„ç†åŸå§‹çš„ç”¨æˆ·è¾“å…¥
 function processUserInput(chatApp,socket){
     var message=$('#send-message').val();
     var systemMessage;
@@ -24,14 +24,14 @@ function processUserInput(chatApp,socket){
     $("#send-message").val("");
 }
 
-//¿Í»§¶Ë³ÌĞò³õÊ¼»¯Âß¼­
+//å®¢æˆ·ç«¯ç¨‹åºåˆå§‹åŒ–é€»è¾‘
 var socket=io.connect();
 $(document).ready(function(){
     var chatApp=new Chat(socket);
     socket.on('nameResult', function (result) {
         var message;
         if(result.success){
-            message='you are known as '+result.name+".";
+            message='å½“å‰çš„ç”¨æˆ·åæ˜¯ï¼š '+result.name+".";
         }
         else {
             message = result.message;
@@ -40,7 +40,7 @@ $(document).ready(function(){
     });
     socket.on('joinResult', function (result) {
         $('#room').text(result.room);
-        $('#messages').append(divSystemContentElement('Room changed.'));
+        $('#messages').append(divSystemContentElement('æˆ¿é—´å·²ç»æ›´æ¢ã€‚.'));
     });
 
     socket.on('message', function (message) {
